@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\StoreProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -18,9 +20,13 @@ class ProductController extends Controller
         return view('products.create',['categoryid'=>$id]);
     }
 
-    public function store(Request $request,$id){
+    public function store(StoreProductRequest $request,$id){
+
+        $validated = $request->validated();
+
         $product=new Product();
-        $product->updateOrInsert(['name' => $request->productName,'description'=>$request->productdesc,'slug'=>$request->productslug,'category_id'=>$id,'available'=>1]);
+       
+        $product->updateOrInsert(['name' => $validated['name'],'description'=>$validated['description'],'slug'=>$validated['slug'],'category_id'=>$id,'available'=>1]);
         return redirect()->route('categories.products.list',$id);
     }
 
@@ -29,12 +35,24 @@ class ProductController extends Controller
         return view('products.update',['product'=>$product]);
     }
 
-    function update(Request $request,$id){
-        $product=product::find($id);
-        $product->name = $request->productName;
+    // function update(StoreProductRequest $request,$id){
+    //     $validated = $request->validated();
+    //     $product=Product::find($id);
+    //     $product->name=$validated['name'];
+    //     $product->update();
+    //     return redirect()->route('categories.products.list',$product->category_id);
+    // }
+
+    function update(StoreCategoryRequest $request,$id){
+
+        $validated = $request->validated();
+        $product=Product::find($id);
+        $product->name=$validated['name'];
         $product->update();
         return redirect()->route('categories.products.list',$product->category_id);
     }
+
+
 
     public function delete($id){
         $product =product::findOrFail($id);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCategoryRequest;
 use App\Models\Category;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
@@ -20,9 +21,11 @@ return View('category.list',['categories'=>$categories]);
         return view('category.create');
     }
 
-    public function store(Request $request){
+    public function store(StoreCategoryRequest $request){
+
         $category= new Category;
-        $category->name=$request->categoryName;
+        $validated = $request->validated();
+        $category->name=$validated['name'];
         $category->save(); // insert into table 
         return redirect()->route('categories.list');
 
@@ -41,9 +44,11 @@ function updateform($id){
     return view('category.update',['category'=>$category]);
 }
 
-function update(Request $request,$id){
+function update(StoreCategoryRequest $request,$id){
+
+    $validated = $request->validated();
     $category=Category::find($id);
-    $category->name = $request->categoryName;
+    $category->name=$validated['name'];
     $category->update();
     return redirect()->route('categories.list');
 }

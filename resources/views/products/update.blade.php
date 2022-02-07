@@ -13,9 +13,16 @@
   <form method="POST" action="{{route('products.update',$product->id)}}">
     <div class="mb-3 mt-3">
     @csrf
-      <label for="product">Category:</label>
-      <input type="text" class="form-control" id="product" placeholder="Enter category" name="productName" value="{{$product->name}}">
+      <label for="product">Product:</label>
+      <input type="text" class="form-control" id="product" placeholder="Enter Product" name="name" value="{{$product->name}}" class="@error('name') is-invalid @enderror">
+     
+      @error('name')
+    <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+   
     </div>
+
+    
     <button type="submit" class="btn btn-info">Update</button>
   </form>
 </div>

@@ -18,11 +18,12 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->boolean('available');
-            $table->string('price');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('no action');
+            
+
             $table->timestamps();
         });
     }

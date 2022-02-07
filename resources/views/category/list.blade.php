@@ -38,7 +38,7 @@
            <form action="{{route('categories.delete', $category->id)}}" method="post">
             @csrf   
             @method('delete')
-            <input class="btn btn-danger mt-5" value="Delete category" type="submit">
+            <input class="btn btn-danger mt-5" value="Delete category" type="submit" >
            </form>
        </td>
        <td>

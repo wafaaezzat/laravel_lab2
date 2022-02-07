@@ -15,12 +15,29 @@
     <div class="mb-3 mt-3">
     @csrf
     <label for="cat">Product:</label>
-      <input type="text" class="form-control" id="cat" placeholder="Enter product" name="productName">
+      <input type="text" class="form-control" id="cat" placeholder="Enter product" name="name" class="@error('name') is-invalid @enderror">
+     
+      @error('name')
+    <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+     
       <label for="cat1">Description:</label>
-      <input type="text" class="form-control" id="cat1" placeholder="Enter description" name="productdesc">
+      <input type="text" class="form-control" id="cat1" placeholder="Enter description" name="description" class="@error('description') is-invalid @enderror">
+    
+      @error('description')
+    <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+     
       <label for="cat2">slug:</label>
-      <input type="text" class="form-control" id="cat2" placeholder="Enter slug" name="productslug">
+      <input type="text" class="form-control" id="cat2" placeholder="Enter slug" name="slug" class="@error('slug') is-invalid @enderror">
+      
+      @error('slug')
+    <div class="alert alert-danger">{{ $message }}</div>
+      @enderror
+     
     </div>
+
+    
     <button type="submit" class="btn btn-info">Submit</button>
   </form>
 </div>

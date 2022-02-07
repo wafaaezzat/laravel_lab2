@@ -15,7 +15,11 @@
     <div class="mb-3 mt-3">
     @csrf
       <label for="category">Category:</label>
-      <input type="text" class="form-control" id="category" placeholder="Enter category" name="categoryName" value="{{$category->name}}">
+      <input type="text" class="form-control" id="category" placeholder="Enter category" name="name" value="{{$category->name}}"class="@error('name') is-invalid @enderror">
+      @error('name')
+    <div class="alert alert-danger">{{ $message }}</div>
+@enderror
+   
     </div>
     <button type="submit" class="btn btn-info">Update</button>
   </form>
