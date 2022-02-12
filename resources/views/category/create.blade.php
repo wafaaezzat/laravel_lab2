@@ -13,6 +13,7 @@
 <body>
 
 <div class="container mt-3">
+  <h1>Hello  {{auth()->user()->name}}</h1>
   <h2>Create Category</h2>
   <form method="POST" action="{{route('categories.store')}}">
     <div class="mb-3 mt-3">

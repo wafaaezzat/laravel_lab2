@@ -21,6 +21,8 @@
         <a class="nav-link active" href="#category1">{{$category->name}}</a>
       </li>
         @endforeach
+        <li><a href="{{route('register')}}"><input class="btn btn-dark" value="Register"></a></li>
+ <li> <a href="{{route('login')}}"><input class="btn btn-dark" value="Login"></a></li>
     </ul>
   </div>
 </nav>
@@ -55,6 +57,9 @@
   </table>
 
   <a href="{{route('categories.create')}}"><input class="btn btn-info" value="Add category"></a>
+  
+
+
 </div>
 
 
