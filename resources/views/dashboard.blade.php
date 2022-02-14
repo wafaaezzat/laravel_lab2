@@ -15,4 +15,11 @@
             </div>
         </div>
     </div>
+
+    <div class="container text-center">
+        <h2>Welcome in our website</h2>
+        <a href="{{route('categories.list')}}" class="btn btn-primary m-5">Show Categories</a>
+    </div>
+
+
 </x-app-layout>

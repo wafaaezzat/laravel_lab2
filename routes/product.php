@@ -13,3 +13,4 @@ Route::post('/storeCategory/{id}',[ProductController::class,'store'])->name('pro
 Route::delete('/deleteProduct/{id}',[ProductController::class,'delete'])->name('products.delete');
 Route::get('/updateformProduct/{id}',[ProductController::class,'updateform'])->name('products.updateform');
 Route::post('/updateProduct/{id}',[ProductController::class,'update'])->name('products.update');
+Route::get('/product/show/{id}',[ProductController::class,'show'])->name('product.show');
